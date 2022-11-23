@@ -27,7 +27,7 @@ library(performance)
 
 
 # Load data
-load(file="for_public_repo/data/KI_TaggedCoralData.RData")
+load(file="data/KI_TaggedCoralData.RData")
 
 # Look at dfs
 head(tagged.data)
@@ -196,3 +196,4 @@ plotResiduals(bl.model.resid, tagged.bleaching$island.region)
 
 # Plot residuals against predictor values (base)
 plot(tagged.bleaching$localdisturbance.continuous_rescaled, bl.model.resid$scaledResiduals)
+

@@ -31,7 +31,7 @@ library(grid)
 
 
 # Load data
-load(file="for_public_repo/data/KI_TaggedCoralData.RData")
+load(file="data/KI_TaggedCoralData.RData")
 
 # Look at dfs
 head(tagged.data) #for figure 5a,b,c
@@ -48,6 +48,9 @@ head(species.figure.bleaching) # for figure S11
 ###############
 ### panel a ###
 ###############
+
+# create color palette
+ovcolor <-  beyonce_palette(90)
 
 # make function for color transparency
 makeTransparent<-function(someColor, alpha=100){

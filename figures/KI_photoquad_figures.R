@@ -27,10 +27,11 @@ library(interactions)
 library(ggnewscale)
 library(lemon)
 library(grid)
+library(cowplot)
 
 
 # Load data
-load(file="for_public_repo/data/KI_PhotoQuadData.RData")
+load(file="data/KI_PhotoQuadData.RData")
 
 # Look at dfs
 head(quad.before) #for fig 1C
@@ -177,7 +178,7 @@ fig3e<-ggplot(quad.heat.human, aes(x=heat, y=percent.cover)) +
 fig3e
 
 # # Print to pdf
-# pdf(file = "figures/spq/sp_comp_beforeafter_KT_legendbottom.pdf", width = 10.8, height = 8.2)
+# pdf(file = "figures/spq/sp_comp_beforeafter.pdf", width = 10.8, height = 8.2)
 # fig3e
 # dev.off()
 
@@ -315,12 +316,12 @@ figS6a<-ggplot(bleaching.heat, aes(x=heat, y=percent.cover, group=bleaching)) +
 figS6a
 
 # # Print to pdfs
-# pdf(file = "figures/spq/suppFig_bleaching/Supp_bleaching_A_19sites.pdf", width = 6, height = 4.5)
+# pdf(file = "figures/spq/Supp_bleaching_A.pdf", width = 6, height = 4.5)
 # figS6a
 # dev.off()
 # 
 # # Print to tiffs
-# tiff(file = "figures/spq/suppFig_bleaching/Supp_bleaching_A_19sites.tiff", width = 6, height = 4.5, units="in",res=300)
+# tiff(file = "figures/spq/Supp_bleaching_A.tiff", width = 6, height = 4.5, units="in",res=300)
 # figS6a
 # dev.off()
 
@@ -359,12 +360,12 @@ figS6b<-ggplot(bleaching.heat.human, aes(x=heat, y=percent.cover, group=bleachin
 figS6b
 
 # # Print to pdfs
-# pdf(file = "figures/spq/suppFig_bleaching/Supp_bleaching_B_19sites.pdf", width = 13, height = 4)
+# pdf(file = "figures/spq/Supp_bleaching_B.pdf", width = 13, height = 4)
 # figS6b
 # dev.off()
 # 
 # # Print to tiffs
-# tiff(file = "figures/spq/suppFig_bleaching/Supp_bleaching_B_19sites.tiff", width = 13, height = 4, units="in",res=300)
+# tiff(file = "figures/spq/Supp_bleaching_B.tiff", width = 13, height = 4, units="in",res=300)
 # figS6b
 # dev.off()
 
@@ -413,12 +414,12 @@ figS6c <- ggplot(bleaching.heat.species, aes(x=species, y=proportion, group=blea
 figS6c
 
 # # Print to pdfs
-# pdf(file = "figures/spq/suppFig_bleaching/Supp_bleaching_C_19sites.pdf", width = 15, height = 6.3)
+# pdf(file = "figures/spq/Supp_bleaching_C.pdf", width = 15, height = 6.3)
 # figS6c
 # dev.off()
 # 
 # # Print to tiffs
-# tiff(file = "figures/spq/suppFig_bleaching/Supp_bleaching_C_19sites.tiff", width = 15, height = 6, units="in",res=300)
+# tiff(file = "figures/spq/Supp_bleaching_C.tiff", width = 15, height = 6, units="in",res=300)
 # figS6c
 # dev.off()
 
@@ -457,12 +458,12 @@ figS7a <- ggplot(benthic.cover.heat, aes(x=heat, y=percent.cover,  group=substra
 figS7a
 
 # # Print to pdfs
-# pdf(file = "figures/spq/supp_beforeafter_percentchange/Fig4A_final.pdf", width = 3, height = 3)
+# pdf(file = "figures/spq/Fig4A_final.pdf", width = 3, height = 3)
 # figS7a
 # dev.off()
 # 
 # # Print to tiffs
-# tiff(file = "figures/spq/supp_beforeafter_percentchange/Fig4A_final.tiff", width = 3, height = 3, units="in",res=300)
+# tiff(file = "figures/spq/Fig4A_final.tiff", width = 3, height = 3, units="in",res=300)
 # figS7a
 # dev.off()
 
@@ -496,12 +497,12 @@ figS7b.f <- ggplot(benthic.cover.heat.human, aes(x=heat, y=percent.cover,  group
 figS7b.f
 
 # # Print to pdfs
-# pdf(file = "figures/spq/supp_beforeafter_percentchange/Fig4C_final.pdf", width = 14, height = 3.5)
+# pdf(file = "figures/spq/Fig4C_final.pdf", width = 14, height = 3.5)
 # figS7b.f
 # dev.off()
 # 
 # # Print to tiffs
-# tiff(file = "figures/spq/supp_beforeafter_percentchange/Fig4C_final.tiff", width = 14, height = 3.5, units="in",res=300)
+# tiff(file = "figures/spq/Fig4C_final.tiff", width = 14, height = 3.5, units="in",res=300)
 # figS7b.f
 # dev.off()
 
@@ -536,12 +537,12 @@ figS7g <- ggplot(benthic.change.heat, aes(x=substrate, y=percent.change,  group=
 figS7g
 
 # # Print to pdfs
-# pdf(file = "figures/spq/supp_beforeafter_percentchange/Fig4B_final.pdf", width = 3, height = 3.17)
+# pdf(file = "figures/spq/Fig4B_final.pdf", width = 3, height = 3.17)
 # figS7g
 # dev.off()
 # 
 # # Print to tiffs
-# tiff(file = "figures/spq/supp_beforeafter_percentchange/Fig4B_final.tiff", width = 3, height = 3.17, units="in",res=300)
+# tiff(file = "figures/spq/Fig4B_final.tiff", width = 3, height = 3.17, units="in",res=300)
 # figS7g
 # dev.off()
 
@@ -577,11 +578,11 @@ figS7h.l <- ggplot(benthic.change.heat.human, aes(x=substrate, y=percent.change,
 figS7h.l
 
 # # Print to pdfs
-# pdf(file = "figures/spq/supp_beforeafter_percentchange/Fig4D_final.pdf", width = 12, height = 3.9)
+# pdf(file = "figures/spq/Fig4D_final.pdf", width = 12, height = 3.9)
 # figS7h.l
 # dev.off()
 # 
 #  # Print to tiffs
-# tiff(file = "figures/spq/supp_beforeafter_percentchange/Fig4D_final.tiff", width = 12, height = 3,units="in",res=300)
+# tiff(file = "figures/spq/Fig4D_final.tiff", width = 12, height = 3,units="in",res=300)
 # figS7h.l
 # dev.off()
