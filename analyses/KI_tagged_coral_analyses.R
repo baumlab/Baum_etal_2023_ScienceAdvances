@@ -94,6 +94,35 @@ plotResiduals(overall.resid, tagged.data$lifehistory)
 # Plot residuals against predictor values (base)
 plot(tagged.data$localdisturbance.continuous_rescaled, overall.resid$scaledResiduals)
 
+#####################################
+### Interaction with Life History ###
+#####################################
+
+overall.lh <- glm(status.after.numeric ~ localdisturbance.continuous_rescaled * lifehistory, data=tagged.data, family=binomial(link = "logit"))
+summary(overall.lh)
+
+### diagnostics
+
+check_collinearity(overall.lh)
+
+testDispersion(overall.lh)
+
+# Calculate and plot scaled residuals vs. fitted values (DHARMa)
+lhmodel.resid <- simulateResiduals(fittedModel = overall.lh, plot = F)
+plot(lhmodel.resid)
+#residuals(bl.model.resid)
+hist(lhmodel.resid)
+testResiduals(lhmodel.resid)
+testZeroInflation(lhmodel.resid)
+
+# Plot residuals against other predictor values (DHARMa)
+# Predictors in the model
+plotResiduals(lhmodel.resid, tagged.data$localdisturbance.continuous_rescaled)
+plotResiduals(lhmodel.resid, tagged.data$lifehistory)
+
+
+# Plot residuals against predictor values (base)
+plot(tagged.data$localdisturbance.continuous_rescaled, lhmodel.resid$scaledResiduals)
 
 #########################################
 ### Just stress-tolerant life history ###
