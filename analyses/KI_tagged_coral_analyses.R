@@ -199,7 +199,7 @@ predict(species.glm, hydnophora.range, type = "response")
 ### Binary Bleaching Model ###
 ##############################
 
-bleaching.model <- glm(status.after.numeric ~ species + binary.bleaching.2015c + island.region + localdisturbance.continuous_rescaled + species*binary.bleaching.2015c, data=tagged.bleaching, family=binomial(link = "logit"))
+bleaching.model <- glm(status.after.numeric ~ species + binary.bleaching.2015c + exposure + localdisturbance.continuous_rescaled + species*binary.bleaching.2015c, data=tagged.bleaching, family=binomial(link = "logit"))
 summary(bleaching.model)
 
 ### diagnostics
@@ -225,4 +225,35 @@ plotResiduals(bl.model.resid, tagged.bleaching$island.region)
 
 # Plot residuals against predictor values (base)
 plot(tagged.bleaching$localdisturbance.continuous_rescaled, bl.model.resid$scaledResiduals)
+
+
+####################################
+### Proportional Bleaching Model ###
+####################################
+
+bleaching.model.prop <- glm(status.after.numeric ~ species + prop.bleaching.2015c + exposure + localdisturbance.continuous_rescaled + species*prop.bleaching.2015c, data=tagged.bleaching, family=binomial(link = "logit"))
+summary(bleaching.model.prop)
+
+### diagnostics
+check_collinearity(bleaching.model.prop)
+
+testDispersion(bleaching.model.prop)
+
+# Calculate and plot scaled residuals vs. fitted values (DHARMa)
+bl.model.resid <- simulateResiduals(fittedModel = bleaching.model.prop, plot = F)
+plot(bleaching.model.prop)
+hist(bleaching.model.prop)
+testResiduals(bleaching.model.prop)
+testZeroInflation(bleaching.model.prop)
+
+# Plot residuals against other predictor values (DHARMa)
+# Predictors in the model
+plotResiduals(bleaching.model.prop, tagged.bleaching$localdisturbance.continuous_rescaled)
+plotResiduals(bleaching.model.prop, tagged.bleaching$species)
+plotResiduals(bleaching.model.prop, tagged.bleaching$binary.bleaching.2015c)
+plotResiduals(bleaching.model.prop, tagged.bleaching$island.region)
+
+# Plot residuals against predictor values (base)
+plot(tagged.bleaching$localdisturbance.continuous_rescaled, bleaching.model.prop$scaledResiduals)
+
 

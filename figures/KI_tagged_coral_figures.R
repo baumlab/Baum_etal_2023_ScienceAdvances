@@ -40,6 +40,7 @@ head(species.glm) # for figure 5f and S10
 summary(species.glm)  # for figure 5f and S10
 head(species.figure) # for figure S9
 head(species.figure.bleaching) # for figure S11
+head(status.bleaching.figure) # for figure S12
 
 #<-------------------------------------------------->
 
@@ -362,5 +363,56 @@ figS11 <- ggplot(species.figure.bleaching, aes(x=species, y=proportion, group=bi
 #jpeg("figures/figureS11.jpg", res = 300, width = 8, height = 6, units = "in")
 
 figS11
+
+#dev.off()
+
+#<-------------------------------------------------->
+
+# Figure S12
+
+#jpeg("figures/figureS12.jpg", res = 300, width = 8, height = 8, units = "in")
+
+ggplot(status.bleaching.figure, aes(x = binary.bleaching.2015c, y=count)) + 
+  geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Porites lobata"), color = "white") +
+  scale_fill_manual(labels=c("1"="Alive", "0"="Dead"), values = c("darkred", "grey28")) +
+  new_scale_fill() +
+  geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Platygyra sp."), color = "white") +
+  scale_fill_manual(labels=c("1"="Alive", "0"="Dead"), values = c("tomato2", "grey28")) +
+  new_scale_fill() +
+  geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Favites pentagona"), color = "white") +
+  scale_fill_manual(labels=c("1"="Alive", "0"="Dead"),values = c("lightcoral", "grey28")) +
+  new_scale_fill() +
+  geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Dipsastraea spp."), color = "white") +
+  scale_fill_manual(labels=c("1"="Alive", "0"="Dead"), values = c("goldenrod2", "grey28")) +
+  new_scale_fill() +
+  geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Hydnophora microconos"), color = "white") +
+  scale_fill_manual(labels=c("1"="Alive", "0"="Dead"), values = c("sienna1", "grey28")) +
+  new_scale_fill() +
+  geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Pocillopora grandis"), color = "white") +
+  scale_fill_manual(labels=c("1"="Alive", "0"="Dead"), values = c("royalblue3", "grey28")) +
+  new_scale_fill() +
+  geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Montipora aequituberculata"), color = "white") +
+  scale_fill_manual(labels=c("1"="Alive", "0"="Dead"), values = c("midnightblue", "grey28")) +
+  
+  facet_rep_wrap(~species, scales = "free_y")+ 
+  
+  labs(x="Bleaching incidence in July 2015", y="Number of coral colonies\n  ", fill="") +
+  scale_x_discrete(labels=c("0"="Healthy", "1"="Bleaching")) + 
+  theme_classic() + theme(axis.title = element_text(size = 14), 
+                          axis.text = element_text(size = 12, color = "black"), 
+                          strip.background = element_blank(), strip.text = element_text(size = 12, face = "italic"),
+                          axis.ticks = element_line(size = 1), axis.ticks.length = unit(0.3, "lines"),
+                          legend.text = element_text(size = 12), legend.position = c(.5,.12), 
+                          legend.key.size = unit(1, "line")) + 
+  guides(fill = guide_legend(byrow=TRUE, ncol = 2))   ### legend finalized in photoshop
+
+grid.text("A", x = unit(0.1, "npc"), y = unit(0.97, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
+grid.text("B", x = unit(0.41, "npc"), y = unit(0.97, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
+grid.text("C", x = unit(0.72, "npc"), y = unit(0.97, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
+grid.text("D", x = unit(0.1, "npc"), y = unit(0.65, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
+grid.text("E", x = unit(0.41, "npc"), y = unit(0.65, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
+grid.text("F", x = unit(0.72, "npc"), y = unit(0.65, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
+grid.text("G", x = unit(0.09, "npc"), y = unit(0.33, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
+
 
 #dev.off()
