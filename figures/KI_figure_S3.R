@@ -179,13 +179,35 @@ legend <- g_legend(vis)
 
 ###Make paneled figure
 
-#pdf(file = "figures/disturbance_figure_colored.pdf", width = 12, height = 8)
+#pdf(file = "figures/disturbance_figure_colored.pdf", width = 10, height = 8)
 
 grid.arrange(arrangeGrob(sed2, sed1, vis + theme(legend.position = "none"), MI, legend,
                          layout_matrix = rbind(c(1,1,2,2),
                                                c(3,3,4,4),
                                                c(NA,5,5,NA)),
                          heights=rbind((unit(3, "in")),(unit(3, "in")), (unit(1, "in")))))
+#a
+grid.text("A", x = unit(0.015, "npc"), y = unit(0.97, "npc"), gp = gpar(fontsize=18, fontface = "bold" ))
+grid.text(expression(paste(italic("P"), " < 0.001")), x = unit(0.423, "npc"), y = unit(0.68, "npc"), gp = gpar(fontsize=14 ))
+grid.text(expression("R"^2~" = 0.5041"), x = unit(0.43, "npc"), y = unit(0.66, "npc"), gp = gpar(fontsize=14 ))
+
+#b
+grid.text("B", x = unit(0.515, "npc"), y = unit(0.97, "npc"), gp = gpar(fontsize=18, fontface = "bold" ))
+grid.text(expression(paste(italic("P"), " = 0.001")), x = unit(0.893, "npc"), y = unit(0.68, "npc"), gp = gpar(fontsize=14 ))
+grid.text(expression("R"^2~" = 0.4421"), x = unit(0.9, "npc"), y = unit(0.66, "npc"), gp = gpar(fontsize=14 ))
+
+#c
+grid.text("C", x = unit(0.01, "npc"), y = unit(0.54, "npc"), gp = gpar(fontsize=18, fontface = "bold" ))
+grid.text(expression(paste(italic("P"), " = 0.0019")), x = unit(0.427, "npc"), y = unit(0.25, "npc"), gp = gpar(fontsize=14 ))
+grid.text(expression("R"^2~" = 0.4496"), x = unit(0.43, "npc"), y = unit(0.23, "npc"), gp = gpar(fontsize=14 ))
+
+#d
+grid.text("D", x = unit(0.51, "npc"), y = unit(0.54, "npc"), gp = gpar(fontsize=18, fontface = "bold" ))
+grid.text(expression(paste(italic("P"), " < 0.001")), x = unit(0.9, "npc"), y = unit(0.25, "npc"), gp = gpar(fontsize=14 ))
+grid.text("a", x = unit(0.658, "npc"), y = unit(0.328, "npc"), gp = gpar(fontsize=15))
+grid.text("b", x = unit(0.755, "npc"), y = unit(0.26, "npc"), gp = gpar(fontsize=15))
+grid.text("c", x = unit(0.848, "npc"), y = unit(0.51, "npc"), gp = gpar(fontsize=15))
+grid.text("c", x = unit(0.943, "npc"), y = unit(0.47, "npc"), gp = gpar(fontsize=15))
 
 #dev.off()
 
