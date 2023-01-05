@@ -12,7 +12,7 @@ sitedata <- read.csv(here::here("data","KI_Monitoring_SiteData_Oct2020.csv"))
 
 ggplot(sitedata, aes(x = Intersect_Pop_2km, y = Fishing_Buffer_10levels_Standardized)) + 
   geom_point(stat = "identity") + 
-  labs(x = "Population within 2 km", y = "Subsistance fishing pressure") + 
+  labs(x = "Population within 2 km", y = "Subsistence fishing pressure") + 
   theme_classic()
 
 #dev.off()
