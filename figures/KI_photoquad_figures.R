@@ -286,14 +286,14 @@ grid.text("B", x = unit(0.015, "npc"), y = unit(0.573, "npc"), gp = gpar(fontsiz
 
 #<-------------------------------------------------->
 
-# Figure S6
+# Figure S7
 
 ###############
 ### panel a ###
 ###############
 
 # Plot panel A: Stacked barplot  % cover,  healthy vs. bleaching coral, across three timepoints 
-figS6a<-ggplot(bleaching.heat, aes(x=heat, y=percent.cover, group=bleaching)) + 
+figS7a<-ggplot(bleaching.heat, aes(x=heat, y=percent.cover, group=bleaching)) + 
   geom_bar(stat="identity", aes(fill=factor(bleaching)), colour="black") +      
   geom_errorbar(aes(ymin=lower.sd, ymax=upper.sd),                              
                 width=0.05,                                                     
@@ -313,16 +313,16 @@ figS6a<-ggplot(bleaching.heat, aes(x=heat, y=percent.cover, group=bleaching)) +
   scale_fill_manual(breaks=c("Bleaching", "Healthy"), values=c( "white", overall.color[1])) + 
   expand_limits(y=c(0, 60))    
 
-figS6a
+figS7a
 
 # # Print to pdfs
 # pdf(file = "figures/spq/Supp_bleaching_A.pdf", width = 6, height = 4.5)
-# figS6a
+# figS7a
 # dev.off()
 # 
 # # Print to tiffs
 # tiff(file = "figures/spq/Supp_bleaching_A.tiff", width = 6, height = 4.5, units="in",res=300)
-# figS6a
+# figS7a
 # dev.off()
 
 ###############
@@ -330,7 +330,7 @@ figS6a
 ###############
 
 # Plot Panel B: Stacked barplot  % cover,  healthy vs. bleaching coral, by fishing level 
-figS6b<-ggplot(bleaching.heat.human, aes(x=heat, y=percent.cover, group=bleaching)) + 
+figS7b<-ggplot(bleaching.heat.human, aes(x=heat, y=percent.cover, group=bleaching)) + 
   geom_bar(stat="identity", aes(fill=interaction(bleaching, localdisturbance.categorical)), colour="black") +              
   geom_errorbar(aes(ymin=lower.sd, ymax=upper.sd),                                     
                 width=0.05,                                                            
@@ -357,16 +357,16 @@ figS6b<-ggplot(bleaching.heat.human, aes(x=heat, y=percent.cover, group=bleachin
   guides(fill="none") +
   expand_limits(y=c(0, 10))                                                                   
 
-figS6b
+figS7b
 
 # # Print to pdfs
 # pdf(file = "figures/spq/Supp_bleaching_B.pdf", width = 13, height = 4)
-# figS6b
+# figS7b
 # dev.off()
 # 
 # # Print to tiffs
 # tiff(file = "figures/spq/Supp_bleaching_B.tiff", width = 13, height = 4, units="in",res=300)
-# figS6b
+# figS7b
 # dev.off()
 
 ###############
@@ -374,7 +374,7 @@ figS6b
 ###############
 
 # Plot Panel C:Stacked barplot  % cover,  healthy vs. bleaching coral, by taxa
-figS6c <- ggplot(bleaching.heat.species, aes(x=species, y=proportion, group=bleaching)) + 
+figS7c <- ggplot(bleaching.heat.species, aes(x=species, y=proportion, group=bleaching)) + 
   geom_bar(stat="identity", aes(fill=interaction(bleaching,species)), colour="black") +   
   facet_wrap(~heat, nrow=1, scales="fixed", labeller=labeller(heat=field.labels)) + 
   labs(x="", y="Percent Bleaching and Healthy", colour="", title="") +                    
@@ -411,28 +411,28 @@ figS6c <- ggplot(bleaching.heat.species, aes(x=species, y=proportion, group=blea
   guides(fill="none") +
   expand_limits(y=c(0, 100))  
 
-figS6c
+figS7c
 
 # # Print to pdfs
 # pdf(file = "figures/spq/Supp_bleaching_C.pdf", width = 15, height = 6.3)
-# figS6c
+# figS7c
 # dev.off()
 # 
 # # Print to tiffs
 # tiff(file = "figures/spq/Supp_bleaching_C.tiff", width = 15, height = 6, units="in",res=300)
-# figS6c
+# figS7c
 # dev.off()
 
 
 #<-------------------------------------------------->
 
-# Figure S7
+# Figure S8
 
 ###############
 ### panel a ###
 ###############
 
-figS7a <- ggplot(benthic.cover.heat, aes(x=heat, y=percent.cover,  group=substrate)) +     
+figS8a <- ggplot(benthic.cover.heat, aes(x=heat, y=percent.cover,  group=substrate)) +     
   geom_bar(stat="identity", aes(fill=factor(substrate)), position=position_dodge(0.9)) +   
   geom_errorbar(aes(ymin=lower.sd, ymax=upper.sd),                                         
                 width=0.05,                                                           
@@ -455,23 +455,23 @@ figS7a <- ggplot(benthic.cover.heat, aes(x=heat, y=percent.cover,  group=substra
   guides(fill="none") +
   ylim(0, 85) 
 
-figS7a
+figS8a
 
 # # Print to pdfs
 # pdf(file = "figures/spq/Fig4A_final.pdf", width = 3, height = 3)
-# figS7a
+# figS8a
 # dev.off()
 # 
 # # Print to tiffs
 # tiff(file = "figures/spq/Fig4A_final.tiff", width = 3, height = 3, units="in",res=300)
-# figS7a
+# figS8a
 # dev.off()
 
 #################
 ### panel b-f ###
 #################
 
-figS7b.f <- ggplot(benthic.cover.heat.human, aes(x=heat, y=percent.cover,  group=substrate)) +      
+figS8b.f <- ggplot(benthic.cover.heat.human, aes(x=heat, y=percent.cover,  group=substrate)) +      
   geom_bar(stat="identity", aes(fill=factor(substrate)), position=position_dodge(0.9)) +            
   geom_errorbar(aes(ymin=lower.sd, ymax=upper.sd),                                           
                 width=0.05,                                                           
@@ -494,23 +494,23 @@ figS7b.f <- ggplot(benthic.cover.heat.human, aes(x=heat, y=percent.cover,  group
   guides(fill="none") +
   ylim(0, 85) 
 
-figS7b.f
+figS8b.f
 
 # # Print to pdfs
 # pdf(file = "figures/spq/Fig4C_final.pdf", width = 14, height = 3.5)
-# figS7b.f
+# figS8b.f
 # dev.off()
 # 
 # # Print to tiffs
 # tiff(file = "figures/spq/Fig4C_final.tiff", width = 14, height = 3.5, units="in",res=300)
-# figS7b.f
+# figS8b.f
 # dev.off()
 
 ###############
 ### panel g ###
 ###############
 
-figS7g <- ggplot(benthic.change.heat, aes(x=substrate, y=percent.change,  group=substrate)) +       
+figS8g <- ggplot(benthic.change.heat, aes(x=substrate, y=percent.change,  group=substrate)) +       
   geom_bar(stat="identity", aes(fill=factor(substrate)), position=position_dodge(0.9)) +    
   geom_text(aes(label=ifelse(percent.change>0,ceiling(percent.change),'')),vjust=-0.3) +
   geom_text(aes(label=ifelse(percent.change<0,ceiling(percent.change),'')),vjust=1.3) + 
@@ -534,23 +534,23 @@ figS7g <- ggplot(benthic.change.heat, aes(x=substrate, y=percent.change,  group=
   #expand_limits(y=c(-150, 800)
   scale_y_continuous(limits = c(-145, 1060), breaks = c(0, 200, 400, 600, 800, 1000))
 
-figS7g
+figS8g
 
 # # Print to pdfs
 # pdf(file = "figures/spq/Fig4B_final.pdf", width = 3, height = 3.17)
-# figS7g
+# figS8g
 # dev.off()
 # 
 # # Print to tiffs
 # tiff(file = "figures/spq/Fig4B_final.tiff", width = 3, height = 3.17, units="in",res=300)
-# figS7g
+# figS8g
 # dev.off()
 
 #################
 ### panel h-l ###
 #################
 
-figS7h.l <- ggplot(benthic.change.heat.human, aes(x=substrate, y=percent.change,  group=substrate)) +     
+figS8h.l <- ggplot(benthic.change.heat.human, aes(x=substrate, y=percent.change,  group=substrate)) +     
   geom_bar(stat="identity", aes(fill=factor(substrate)), position=position_dodge(0.9)) +    
   geom_text(aes(label=ifelse((percent.change>0 & percent.change <1000),ceiling(percent.change),'')),vjust=-0.3) +
   geom_text(aes(label=ifelse(percent.change<0,ceiling(percent.change),'')),vjust=1.3) + 
@@ -575,14 +575,14 @@ figS7h.l <- ggplot(benthic.change.heat.human, aes(x=substrate, y=percent.change,
   scale_y_continuous(breaks = c(0, 200, 400, 600, 800, 1000)) +
   coord_cartesian(ylim=c(-145, 1060))
 
-figS7h.l
+figS8h.l
 
 # # Print to pdfs
 # pdf(file = "figures/spq/Fig4D_final.pdf", width = 12, height = 3.9)
-# figS7h.l
+# figS8h.l
 # dev.off()
 # 
 #  # Print to tiffs
 # tiff(file = "figures/spq/Fig4D_final.tiff", width = 12, height = 3,units="in",res=300)
-# figS7h.l
+# figS8h.l
 # dev.off()

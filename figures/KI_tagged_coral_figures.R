@@ -235,10 +235,10 @@ grid.text("F", x = unit(0.58, "npc"), y = unit(0.985, "npc"), gp = gpar(fontsize
 
 #<-------------------------------------------------->
 
-# Figure S9
+# Figure S10
 
 
-figS9 <- ggplot(species.figure, aes(x = reorder(localdisturbance.categorical, localdisturbance.numerical), y=status.proportion)) + 
+figS10 <- ggplot(species.figure, aes(x = reorder(localdisturbance.categorical, localdisturbance.numerical), y=status.proportion)) + 
   geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Porites lobata"), color = "white") +
   scale_fill_manual(labels=c("ALIVE"="Alive", "DEAD"="Dead"), values = c("darkred", "grey28")) +
   new_scale_fill() +
@@ -282,17 +282,17 @@ grid.text("F", x = unit(0.71, "npc"), y = unit(0.63, "npc"), gp = gpar(fontsize=
 grid.text("G", x = unit(0.06, "npc"), y = unit(0.31, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
 
 
-#jpeg("figures/figureS9.jpg", res = 300, width = 8, height = 8, units = "in")
+#jpeg("figures/figureS10.jpg", res = 300, width = 8, height = 8, units = "in")
 
-figS9 #legends were cleaned up in photoshop
+figS10 #legends were cleaned up in photoshop
 
 #dev.off()
 
 #<-------------------------------------------------->
 
-# Figure S10
+# Figure S11
 
-figS10 <- interact_plot(model = species.glm, pred = disturbcont_x, 
+figS11 <- interact_plot(model = species.glm, pred = disturbcont_x, 
                                   modx = comspecies, interval = TRUE, x.label = "Human Disturbance", 
                                   y.label = "Survival", legend.main = "", plot.points = TRUE, 
                                   jitter = c(0.1, .1), vary.lty = FALSE, point.alpha = 0.6, 
@@ -301,16 +301,16 @@ figS10 <- interact_plot(model = species.glm, pred = disturbcont_x,
                                                                 "Favia matthai"="goldenrod2", "Hydnophora microconos"="sienna1",
                                                                 "Pocillopora grandis"="royalblue3", "Montipora foliosa"="midnightblue"))
 
-figS10 <- figS10 + theme_classic() +
+figS11 <- figS11 + theme_classic() +
   theme(strip.text = element_blank(), axis.text = element_text(size = 12, color = "black"), 
         axis.title = element_text(size = 14, color = "black"), plot.background=element_blank(), 
         panel.background = element_blank()) + 
   scale_y_continuous(breaks = c(0.0, 0.5, 1.0), labels = c(0.0, 0.5, 1.0)) + 
   scale_x_continuous(limits = c(-0.55, 2.02), breaks = c(-0.5, 0.0, 0.5, 1.0, 1.5, 2.0))
 
-#jpeg("figures/figureS10.jpg", res = 300, width = 8, height = 6, units = "in")
+#jpeg("figures/figureS11.jpg", res = 300, width = 8, height = 6, units = "in")
 
-figS10 # legend added in photoshop
+figS11 # legend added in photoshop
 
 grid.text("A", x = unit(0.035, "npc"), y = unit(0.98, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
 grid.text("B", x = unit(0.365, "npc"), y = unit(0.98, "npc"), gp = gpar(fontsize=14, fontface = "bold"))
@@ -324,7 +324,7 @@ grid.text("G", x = unit(0.035, "npc"), y = unit(0.37, "npc"), gp = gpar(fontsize
 
 #<-------------------------------------------------->
 
-# Figure S11
+# Figure S12
 
 # Plot as a barplot, assigning different colours to the factor "Bleached" (healthy vs. bleaching coral). Colour the border of the bars black. 
 species.labels=c("Platygyra sp."=expression(italic("Platygyra sp.")),"Dipsastraea spp."=expression(italic("Dipsastraea spp.")), 
@@ -334,7 +334,7 @@ species.labels=c("Platygyra sp."=expression(italic("Platygyra sp.")),"Dipsastrae
                  "Pocillopora grandis"=expression(italic("Pocillopora grandis")), 
                  "Porites lobata"=expression(italic("Porites lobata")), parse = TRUE)
 
-figS11 <- ggplot(species.figure.bleaching, aes(x=species, y=proportion, group=binary.bleaching.2015c)) + 
+figS12 <- ggplot(species.figure.bleaching, aes(x=species, y=proportion, group=binary.bleaching.2015c)) + 
   geom_bar(stat="identity", aes(fill=interaction(binary.bleaching.2015c,species)), colour="black") +               
   labs(x="", y="Percent Bleaching and Healthy", colour="", title="") +                                  
   theme_classic() +                                                                   
@@ -360,17 +360,17 @@ figS11 <- ggplot(species.figure.bleaching, aes(x=species, y=proportion, group=bi
   guides(fill="none") +
   expand_limits(y=c(0, 100))                                        
 
-#jpeg("figures/figureS11.jpg", res = 300, width = 8, height = 6, units = "in")
+#jpeg("figures/figureS12.jpg", res = 300, width = 8, height = 6, units = "in")
 
-figS11
+figS12
 
 #dev.off()
 
 #<-------------------------------------------------->
 
-# Figure S12
+# Figure S13
 
-#jpeg("figures/figureS12.jpg", res = 300, width = 8, height = 8, units = "in")
+#jpeg("figures/figureS13.jpg", res = 300, width = 8, height = 8, units = "in")
 
 ggplot(status.bleaching.figure, aes(x = binary.bleaching.2015c, y=count)) + 
   geom_bar(stat='identity', position='stack', aes(fill = status.after), data = ~subset(., species == "Porites lobata"), color = "white") +
