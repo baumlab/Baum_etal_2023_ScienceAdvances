@@ -192,7 +192,7 @@ fig5f <- interact_plot(model = species.glm, pred = disturbcont_x, modx = comspec
                                                                   "Pocillopora grandis"="P. grandis",  "Montipora foliose"="M. aequituberculata"), 
                                  colors = c("Porites lobata"="darkred", "Platygyra sp"="tomato2", 
                                             "Favites pentagona"="lightcoral", "Favia matthai"="goldenrod2", "Hydnophora microconos"="sienna1",
-                                                                                                                                                                                                                                                                                                                 "Pocillopora grandis"="royalblue3", "Montipora foliosa"="midnightblue"),  line.thickness = 2)
+                                            "Pocillopora grandis"="royalblue3", "Montipora foliosa"="midnightblue"),  line.thickness = 2)
 
 fig5f <- fig5f + theme_classic() +
   # annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf, size = 1.5) +
